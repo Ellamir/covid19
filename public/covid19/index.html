@@ -23,12 +23,36 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar Sesión</a>
+            <a class="nav-link login" href="#" id="login">Iniciar Sesión</a>
+
           </li>
+          <li class="nav-item">
+            <a class="nav-link d-none" href="#" id="chile">Situación Chile</a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-none" href="#" id="logout">Logout</a>
+
+          </li>
+
         </ul>
       </div>
     </div>
   </nav>
+
+  <div class="col-md-6 d-block">
+    <form id="js-form">
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" id="txtEmail" class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="txtPass" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+</div>
 
   <h1 class="container my-4 text-center">Situación Mundial</h1>
 
