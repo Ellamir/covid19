@@ -1,3 +1,7 @@
+let JWT = '';
+let email = '';  
+let password = '';
+
 //Llamado a la API 
 const getTotal = async () => {
     try {
@@ -178,12 +182,13 @@ const LlenarTabla = async (data, table) => {
 // para obtener el JWT
 $('#js-form').submit(async (event) => {
     event.preventDefault();
-    const email = document.getElementById('txtEmail').value;  
-    const password = $('#txtPass').val();
-    const JWT = await postData(email,password);
+    email = document.getElementById('txtEmail').value;  
+    password = $('#txtPass').val();
+    $('#loginModal').modal('hide');  //
+    JWT = await postData(email,password);
     //const album = await getImage(JWT);
     toggleLogin();
-    console.log(JWT);
+    console.log('JWT', JWT);
     
 })
 
@@ -222,8 +227,7 @@ const getImage = async (token) => {
 
 // botones en login - logout
 
-const toggleLogin = () => {
-    
+const toggleLogin = () => { 
     if($('#chile').hasClass('d-none')) {
     $('#chile').removeClass('d-none');
     } else {
@@ -239,9 +243,37 @@ const toggleLogin = () => {
     } else {
         $('#login').removeClass('d-none')
         };
-
+}
+const toggleChile = () => { 
+    if($('#infoChile').hasClass('d-none')) {
+    $('#infoChile').removeClass('d-none');
+    } else {
+        $('#infoChile').addClass('d-none')
+        };
+    if($('#tablaCovid').hasClass('d-none')) {
+        $('#tablaCovid').removeClass('d-none');
+    } else {
+        $('#tablaCovid').addClass('d-none')
+        };
 }
 
-// $('aqui clases para identificar el elemento').addClass('d-none'); // agrega la clase d-none al elemento
-// $('aqui clases para identificar el elemento').removeClass('d-none'); // quita la clase d-none al elemento
+// $('ID elemento').addClass('d-none'); // agrega la clase d-none al elemento
+// $('ID elemento').removeClass('d-none'); // quita la clase d-none al elemento
 
+$('#logout').on('click', function() {
+    toggleLogin();
+    JWT = '';
+    email = '';  
+    password = '';
+    console.log('JWT:', JWT);
+  });
+
+  $('#chile').on('click', function() {
+    toggleChile();
+    console.log('JWT:', JWT);
+  });
+
+  $('#home').on('click', function() {
+    toggleChile();
+    console.log('JWT:', JWT);
+  });
